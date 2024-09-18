@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block content %}
+<div class="container p-1 d-flex justify-content-center">
+  <div class="card p-4 bg-dark" style="height: 82vh;">
+    <div
+      class="image d-flex flex-column justify-content-center align-items-center"
+    >
+      
+        <img src="{{user.img.url}}" height="100" width="100" style="width: 150px; height: 150px; border-radius: 50%; border: 10px double blue;"/>
+      <h4 class="name mt-3 text-light">{{user.last_name}} {{user.first_name}}</h4>
+      <span class="idd text-light" >{{user.email}}</span>
+      <div
+        class="d-flex flex-row justify-content-center align-items-center gap-2"
+      >
+        <span class="idd1 text-light">id:{{user.id}}</span>
+        <span class="text-light"><i class="fa fa-copy"></i></span>
+      </div>
+      <div
+        class="d-flex flex-row justify-content-center align-items-center mt-3"
+      >
+        <span class="number text-light">1069 <span class="follow">Followers</span></span>
+      </div>
+      <div class="d-flex mt-2">
+        <button class="btn btn-dark "><a href="{%url 'users:update' user.id%}" style="text-decoration: none; color: aliceblue;padding: 10px;">Edit Profile</a></button>
+      </div>
+      <div class="text mt-3 text-light">
+        <span>
+          {{user.user_phone}}
+        </span>
+      </div>
+      <div
+        class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"
+      >
+        <span class="text-light"><i class="fa-brands fa-twitter"></i></span>
+        <span class="text-light"><i class="fa-brands fa-facebook"></i></span>
+        <span class="text-light"><i class="fa-brands fa-square-instagram"></i></span>
+        <span class="text-light"><i class="fa-brands fa-linkedin"></i></span>
+      </div>
+      <div class="px-2 rounded mt-4 date">
+        <span class="join text-light">{{user.date_joined|date:"M d, Y"}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

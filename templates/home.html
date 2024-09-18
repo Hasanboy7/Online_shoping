@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container-full" style="height: 81vh; ">
+        <div style="height: 80vh;">
+            <video class="home__video" style="height: 83vh;" autoplay muted loop src="{% static 'videos1/vecteezy_particles-background-animation_21255314.mp4' %}"></video>
+            <section class="home" id="home">
+                <div class="section__content">
+                    <div class="home__left">
+                        <h1 class="page__title">Salom, <br> men <span>Hasanboy</span> <br> Fullstack Developer</h1>
+                        <div class="btn btn-primary mt-3"><a class="text-light" href="#contact">Kontakt</a></div>
+                        <div class="icons">
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="home__right" style="width: 50%; margin-top: -150px;">
+                        <div class="my__img-box" style="width: 100%;">
+                            <img class="my__img" src="{% static 'images1/shop_img.jpg' %}" alt="mening rasmim" style="height: 500px; width: 600px;">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="container-full p-4" style="background: rgb(6,238,189);
+    background: linear-gradient(3deg, rgba(6,238,189,0.8715861344537815) 24%, rgba(12,92,231,0.8883928571428571) 31%, rgba(15,7,255,0.9164040616246498) 65%, rgba(15,231,225,0.8911939775910365) 81%);">
+        <div class="container">
+            {% if categories_with_products %}
+                {% for category, products in categories_with_products.items %}
+                    <h1 class=" bg-dark text-light text-center">{{ category.name }}</h1>
+                    <div class="row g-4">
+                        {% for product in products %}
+                            <div class="col-md-6 col-lg-4 col-xl-3 p-2" >
+                                <div class="rounded position-relative" style="width: 100%; border: 1px solid gold;background-color: rgb(22, 22, 22);">
+                                    <div class="fruite-img w-100">
+                                        <img src="{{ product.img.url }}" class="img-fluid w-100 rounded-top" alt="" style="height: 250px;">
+                                    </div>
+                                    <div class="text-white px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px; background-color: gold;">{{ product.name }}</div>
+                                    <div class="p-4 rounded-bottom" >
+                                        <h4 style="color: rgb(255, 255, 255); text-align: center; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 28px;">{{ product.name }}</h4>
+                                        <p style="color: rgb(255, 255, 255); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; text-align: center;">{{ product.body|slice:110 }}...<a href="{%url 'product:product_view' product.id%}">batafsil</a> </p>
+                                        <div class="d-flex justify-content-between flex-lg-wrap w-100 px-1">
+                                            <p class="fs-5 fw-bold mb-0" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: rgb(255, 247, 0);">{{product.price}} so'm</p>
+                                            <!-- <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary mt-1" style="box-shadow:1px 1px 4px blue; background-color: rgb(252, 215, 5);">
+                                                <i class="fa fa-shopping-bag me-2" style="color: rgb(0, 76, 255);"></i> Savatga qo‘shish
+                                            </a> -->
+                                            <h5 class="mt-3 text-danger rounded p-2 w-100" style="background-color: chartreuse;">Egasi: <i class="text-primary" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{product.user.username}}</i></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            {% else %}:
+                    <h1 class="text-center" style="color: yellow;">Bunday Malumot Topilmadi😆<span style="color: red;">✖</span></h1>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

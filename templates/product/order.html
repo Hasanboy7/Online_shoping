@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Orders</h1>
+    {% for order in orders %}
+    <div style="background-color: rgb(9, 0, 178); color: aliceblue; padding: 10px 20px; margin-top: 20px;">
+      <li class="mt-4" style="display: flex; justify-content: space-between;">
+        <span><i style="font-size: 20px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Maxsulot Id:</i> <i style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: rgb(200, 252, 10); font-size: 20px; background-color: rgb(0, 0, 0);padding: 5px;">{{order.order_id}}</i></span>
+        <span><i style="font-size: 20px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Xarit qilingan sana va vaqti:</i><i style="font-size: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background-color: rgb(238, 255, 7);color: crimson;padding: 5px;">{{order.create_date}}</i></span>
+    </li>
+    <table class="table mt-4 table-dark table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">name</th>
+                <th scope="col">soni</th>
+                <th scope="col">narxi</th>
+            </tr>
+        </thead>
+        {% for i in order.item.all %}
+        <tbody>
+          <tr>
+            <th scope="row">{{i.product_id}}</th>
+            <td>{{i.name}}</td>
+            <td>{{i.quantity}}</td>
+            <td>{{i.price}}</td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+      <h1 class="text-center fs-2">Umumiy narx: <i style="font-size: 26px; color: rgb(208, 255, 0);">{{order.total_price}} so'm</i></h1>
+    </div>
+    {% endfor %}
+</div>
+{% endblock  %}

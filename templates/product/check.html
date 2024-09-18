@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container py-2" style="min-height: 30vh;">
+        <h1 class="text-center">Haridingiz uchun raxmat</h1>
+        <div class="check p-2" style="width: 50%; margin: auto; margin-top: 40px; background-color: darkblue;">
+            <h1 class="text-center text-light">Chekingiz</h1>
+            <table class="table table-striped">
+                <div class="row">
+                    <div class="col fs-4 text-light">Jami Umumiy sumayiz</div>
+                    <div class="col fs-4 text-light" style="text-align: right;">{{total}} so'm</div>
+                </div>
+                <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nomi</th>
+                      <th scope="col">1-tasini narxi</th>
+                      <th scope="col">Soni</th>
+                      <th scope="col">Umumiysi</th>
+                    </tr>
+                </thead>
+                {% for i in all_orders %}
+                <tbody>
+                    <tr>
+                      <th scope="row">{{i.id}}</th>
+                      <td>{{i.name}}</td>
+                      <td>{{i.price}} so'm</td>
+                      <td>{{i.quantity}}</td>
+                      <td>{{i.jami}} so'm</td>
+                    </tr>
+                  </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock  %}
